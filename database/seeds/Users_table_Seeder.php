@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\User;
 
 class Users_table_Seeder extends Seeder
 {
@@ -19,11 +20,11 @@ class Users_table_Seeder extends Seeder
             'password' => bcrypt('admin'),
         ]);
 
-
+         $user = new User();
         $userWriter = $user->create([
                    'name'=> 'writer',
-                   'email'=> 'write@example.com',     //NOTE: SLUG MUST BE LOWER-CASE!
-                   'password'=> bcrypt('admin');
+                   'email'=> 'writer@example.com',     //NOTE: SLUG MUST BE LOWER-CASE!
+                   'password'=> bcrypt('writer'),
                ]);
 
         $userWriter->assignRole('writer');
