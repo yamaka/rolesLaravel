@@ -39,15 +39,20 @@
                         {{ config('app.name', 'Laravel') }}
                     </a>
 
-                    <a class="navbar-brand" href="{{ url('admin') }}">
 
-                        <!-- viendo si es writer -->
 
-                        @role('writer')
-                            I'm a writer!
-                        @else
-                            I'm not a writer...
+                        <!-- viendo si es admin -->
+
+                        @role('admin')
+                          <a class="navbar-brand" href="{{ url('admin') }}">Admin</a>
+                        {{-- @else@role('writer')
+                              <a class="navbar-brand" href="{{ url('writer') }}">I'm a Admin!</a> --}}
                         @endrole
+                        {{-- @role('writer') --}}
+                          <a class="navbar-brand" href="{{ url('writer') }}">Writer</a>
+                        {{-- @endrole --}}
+
+
                         <!-- {{ config('app.name', 'Laravel') }} -->
                     </a>
                 </div>

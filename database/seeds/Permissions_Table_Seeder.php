@@ -12,6 +12,8 @@ class Permissions_Table_Seeder extends Seeder
     public function run()
     {
         $permission = Permission::create(['name' => 'edit articles']);
+        $permission = Permission::create(['name' => 'edit users']);
+
         //$permission = Permission::create(['name' => 'edit users']);
     }
 }

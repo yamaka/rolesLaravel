@@ -14,19 +14,36 @@ class Users_table_Seeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'admin',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('admin'),
-        ]);
 
-         $user = new User();
-        $userWriter = $user->create([
-                   'name'=> 'writer',
+        $writer = new User();
+
+      $userWriter = $writer->create([
+                  'name'=> 'writer',
                    'email'=> 'writer@example.com',     //NOTE: SLUG MUST BE LOWER-CASE!
                    'password'=> bcrypt('writer'),
                ]);
 
+        $admin= new User();
+
+        $userAdmin= $admin->create([
+          'name'=>'admin',
+          'email'=>'admin@example.com',
+          'password' => bcrypt('admin'),
+
+        ]);
+
+        $normal= new User();
+
+
+        $userNormal= $normal->create([
+          'name'=>'normal',
+          'email'=>'normal@example.com',
+          'password' => bcrypt('normal'),
+        ]);
+
         $userWriter->assignRole('writer');
+        $userAdmin->assignRole('admin','writer');
+
+        $userNormal->assignRole('normal');
     }
 }

@@ -19,9 +19,23 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('admin',function(){
 
-    return view('admin');
+Route::group(['middleware' => ['role:admin,edit articles']], function () {
+    //
+      Route::resource('admin','AdminController');
+      Route::resource('writer','WriterController');
 
 
 });
+Route::group(['middleware' => ['role:writer,edit articles']], function () {
+    //
+      Route::resource('writer','WriterController');
+
+
+});
+// Route::get('admin',function(){
+//
+//     return view('admin');
+//
+//
+// });
