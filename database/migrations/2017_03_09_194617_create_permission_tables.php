@@ -90,7 +90,8 @@ class CreatePermissionTables extends Migration
         Schema::drop($config['role_has_permissions']);
         Schema::drop($config['user_has_roles']);
         Schema::drop($config['user_has_permissions']);
-        Schema::drop($config['roles']);
+
         Schema::drop($config['permissions']);
+          Schema::drop($config['roles']);
     }
 }
